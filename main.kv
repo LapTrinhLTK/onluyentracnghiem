@@ -1,0 +1,1582 @@
+MainLayout:
+    scr_mag: scr_mag
+
+    ScreenManager:
+        id: scr_mag
+
+        #Menu Chính
+        Screen:
+            name:'main_menu'
+            on_enter: root.stop = False
+            FloatLayout:
+                MDLabel:
+                    text: 'ÔN LUYỆN TRẮC NGHIỆM CÁC MÔN KHỐI 9'
+                    halign: 'center'
+                    pos_hint: {'center_y':0.8}
+                    font_style:'H6'
+                    bold:True
+
+                MDRectangleFlatButton:
+                    text: 'BÀI THI'
+                    pos_hint:{'center_x':0.5, 'center_y':0.6}
+                    size_hint: (0.5,0.1)
+                    font_size: 20
+                    on_release: root.change_screen('baithi_menu')
+
+                MDRectangleFlatButton:
+                    text: 'ÔN LUYỆN'
+                    pos_hint:{'center_x':0.5, 'center_y':0.45}
+                    size_hint: (0.5,0.1)
+                    font_size: 20
+                    on_release: root.change_screen('onluyen_menu')
+
+                MDRectangleFlatButton:
+                    text: 'CÀI ĐẶT VÀ GIỚI THIỆU'
+                    pos_hint: {'center_x':0.5,'center_y':0.3}
+                    size_hint: (0.5,0.1)
+                    font_size: 15
+                    on_release: root.change_screen('setting_screen')
+
+                MDRectangleFlatButton:
+                    text: 'HƯỚNG DẪN'
+                    pos_hint:{'center_x':0.5, 'center_y':0.15}
+                    size_hint: (0.5,0.1)
+                    font_size: 20
+                    on_release: root.change_screen('hd_menu')
+
+                
+
+        #Menu Bài Thi
+        Screen:
+            name: 'baithi_menu'
+            FloatLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title:'Bài Thi'
+                        left_action_items: [['arrow-left', lambda x: root.change_screen('main_menu')]]
+                        elevation:8
+                    BoxLayout:
+                        ScrollView:
+                            GridLayout:
+                                cols:1
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:50
+
+                                MDLabel:
+                                    text:''
+                                    size_hint:(1,None)
+                                    height:10
+
+                                MDLabel:
+                                    text:'HÃY CHỌN BỘ ĐỀ MÔN THI'
+                                    halign:'center'
+                                    pos_hint:{'center_y':0.8}
+                                    font_style:'H5'
+                                    bold:True
+                                MDList:
+                                    id: md_list
+                                    spacing:10
+
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 1'
+                                        secondary_text: 'Anh Văn - Vật Lý - Lịch Sử'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Vật Lý','Lịch Sử']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-1-circle-outline'
+                                        
+                                            
+                                               
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 2'
+                                        secondary_text: 'Anh Văn - Vật Lý - Địa Lý'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Vật Lý','Địa Lý']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-2-circle-outline'
+                                        
+                                            
+                                            
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 3'
+                                        secondary_text: 'Anh Văn - Vật Lý - GDCD'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Vật Lý','GDCD']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-3-circle-outline'
+                                        
+                                            
+                                            
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 4'
+                                        secondary_text: 'Anh Văn - Hóa Học - Lịch Sử'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Hóa Học','Lịch Sử']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-4-circle-outline'
+                                        
+                                            
+                                               
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 5'
+                                        secondary_text: 'Anh Văn - Hóa Học - Địa Lý'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Hóa Học','Địa Lý']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-5-circle-outline'
+                                        
+                                            
+                                            
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 6'
+                                        secondary_text: 'Anh Văn - Hóa Học - GDCD'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Hóa Học','GDCD']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-6-circle-outline'
+                                        
+                                            
+                                            
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 7'
+                                        secondary_text: 'Anh Văn - Sinh Học - Lịch Sử'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Sinh Học','Lịch Sử']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-7-circle-outline'
+                                        
+                                            
+                                               
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 8'
+                                        secondary_text: 'Anh Văn - Sinh Học - Địa Lý'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Sinh Học','Địa Lý']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-8-circle-outline'
+                                        
+                                            
+                                            
+                                    TwoLineAvatarListItem:
+                                        text:'Đề số 9'
+                                        secondary_text: 'Anh Văn - Sinh Học - GDCD'
+                                        on_release: 
+                                            root.mon_baithi = self.secondary_text
+                                            root.list_mon = ['Anh Văn','Sinh Học','GDCD']
+                                            root.change_screen('pre_baithi')
+                                        IconLeftWidget:
+                                            icon:'numeric-9-circle-outline'
+                                        
+                                            
+                                            
+
+
+
+        #Menu Thông tin Bài Thi
+        Screen:
+            name: 'pre_baithi'
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:'Bài Thi'
+                        left_action_items:[['arrow-left',lambda x:root.change_screen('baithi_menu')]]
+                    Widget:
+                
+                MDLabel:
+                    text:'THÔNG TIN BÀI THI'
+                    halign:'center'
+                    pos_hint:{'center_y':0.75}
+                    font_style:'H5'
+                    bold:True
+                
+                MDLabel:
+                    text:'MÔN: ' + root.mon_baithi
+                    halign:'center'
+                    pos_hint: {'center_y':0.65}
+                    font_size:20
+                
+                MDLabel:
+                    text:'THỜI GIAN: ' + str(root.time_baithi) + ' PHÚT'
+                    halign:'center'
+                    pos_hint:{'center_y':0.5}
+                    font_size:20
+
+                MDSlider:
+                    max: 150
+                    min: 0
+                    value: 0
+                    pos_hint: {'center_x':0.5, 'center_y':0.4}
+                    on_value: root.time_baithi = int(self.value)
+                
+                MDRectangleFlatButton:
+                    text: 'Bắt đầu làm bài thi'
+                    pos_hint: {'center_x':0.5, 'center_y':0.2}
+                    size_hint: None,None
+                    height:50
+                    width: 400
+                    font_size: 20
+                    on_release:root.check1(root.time_baithi, 'baithi_loading')
+
+        #Loading Bài Thi
+        Screen:
+            name:'baithi_loading'
+            on_enter: root.run_multi_func3()
+            FloatLayout:
+                MDLabel:
+                    text:root.waiting_label
+                    halign:'center'
+                    pos_hint:{'center_y':0.6}
+                    font_size:14
+                MDSpinner:
+                    size_hint:None,None
+                    size:dp(50),dp(50)
+                    pos_hint:{'center_x':0.5,'center_y':0.5}
+                    determinate:True                                    
+
+        #Bài làm bài thi
+        Screen:
+            name:'bailam_baithi'
+            on_enter: 
+                root.run_multi_func4()
+                app.remove_first_tab_3()
+               
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+
+                    MDToolbar:
+                        title: root.time_count
+                        elevation:8
+                        right_action_items: [['check-bold', lambda x:root.open_dialog4()]]
+                        left_action_items: [['timer',lambda x:x]]
+
+                    MDBottomNavigation:
+    
+                        MDBottomNavigationItem:
+                            name: 'screen 1'
+                            text: 'Anh Văn'
+                            icon: 'alphabetical-variant'
+                            on_tab_release: 
+                                root.change_to(0)
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi1
+                                on_tab_switch: root.on_tab_switch_3(*args)
+                                TabBaiThi:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+
+                        MDBottomNavigationItem:
+                            name: 'screen 2'
+                            text: root.text_tn
+                            icon: root.icon_tn
+                            on_tab_release: 
+                                root.change_to(1)
+                                
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi2
+                                on_tab_switch: root.on_tab_switch_3(*args)
+                                TabBaiThi:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+                            
+
+                        MDBottomNavigationItem:
+                            name: 'screen 3'
+                            text: root.text_xh
+                            icon: root.icon_xh 
+                            on_tab_release: root.change_to(2)
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi3
+                                on_tab_switch: root.on_tab_switch_3(*args)
+                                TabBaiThi:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+
+        #Kết thúc bài làm bài thi
+        Screen:
+            name:'finish_baithi'
+            on_enter:
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title: 'Thông tin bài làm'
+                        elevation:8
+
+                    BoxLayout:
+                        ScrollView:
+                            GridLayout:
+                                cols:1
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:60
+                                padding:30
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+
+                                MDLabel:
+                                    text:'BÀI LÀM KẾT THÚC'
+                                    halign: 'center'
+                                    pos_hint:{'center_y':0.8}
+                                    font_style:'H5'
+                                    bold:True
+
+                                MDCard:
+                                    orientation:'vertical'
+                                    size_hint:None,None
+                                    size: 300,200
+                                    border_radius: 20
+                                    radius:[15]
+
+                                    MDLabel:
+                                        text:'Bạn đã làm đúng: '+root.point_label+'/60 câu'
+                                        halign:'center'
+                                        font_size:20
+                                    
+                                    MDLabel:
+                                        text: root.comment
+                                        halign:'center'
+                                        font_size:22
+                                
+                                FloatLayout:
+                                    MDRectangleFlatButton:
+                                        text:'XEM LẠI BÀI LÀM'
+                                        pos_hint:{'center_x':0.5,'center_y':0.4}
+                                        font_size: 20
+                                        on_release: root.change_screen('review_baithi')
+
+                                FloatLayout:
+                                    MDRectangleFlatButton:
+                                        text:'TRANG CHỦ'
+                                        pos_hint:{'center_x':0.5,'center_y':0.2}
+                                        font_size: 20
+                                        on_release:root.change_screen('main_menu')     
+
+        #Screen xem lại bài làm bài thi
+        Screen:
+            name:'review_baithi'
+            on_enter: 
+                app.remove_first_tab_4()
+                root.change_to(0)
+               
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+
+                    MDToolbar:
+                        title: 'Bài làm của bạn'
+                        elevation:8
+                        left_action_items: [['arrow-left',lambda x:root.change_screen('finish_baithi')]]
+
+                    MDBottomNavigation:
+    
+                        MDBottomNavigationItem:
+                            name: 'screen 1'
+                            text: 'Anh Văn'
+                            icon: 'alphabetical-variant'
+                            on_tab_release: 
+                                root.change_to(0)
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi4
+                                on_tab_switch: root.on_tab_switch_4(*args)
+                                TabBaiThiReview:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+
+                        MDBottomNavigationItem:
+                            name: 'screen 2'
+                            text: root.text_tn
+                            icon: root.icon_tn
+                            on_tab_release: 
+                                root.change_to(1)
+                                
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi5
+                                on_tab_switch: root.on_tab_switch_4(*args)
+                                TabBaiThiReview:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+                            
+
+                        MDBottomNavigationItem:
+                            name: 'screen 3'
+                            text: root.text_xh
+                            icon: root.icon_xh 
+                            on_tab_release: 
+                                root.change_to(2)
+                                
+                                
+                            MDTabs:
+                                id:tabs_baithi6
+                                on_tab_switch: root.on_tab_switch_4(*args)
+                                TabBaiThiReview:
+                                    id:tab_thi 
+                                    text:'Câu 0'
+        #Menu Ôn Luyện
+        Screen:
+            name: 'onluyen_menu'
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:'Ôn Luyện'
+                        left_action_items: [['arrow-left', lambda x: root.change_screen('main_menu')]]
+                        elevation:8
+                    BoxLayout:
+                        ScrollView:
+                            GridLayout:
+                                cols:1
+                                size_hint_y:None
+                                height:self.minimum_height
+                                padding:20
+                                spacing:70
+
+                                MDLabel:
+                                    text:''
+                                    size_hint:(1,None)
+                                    height:10
+
+                                MDLabel:
+                                    text: 'HÃY CHỌN MÔN ÔN LUYỆN'
+                                    halign:'center'
+                                    pos_hint: {'center_y':0.8}
+                                    font_style:'H5'
+                                    bold:True
+
+                                GridLayout:
+                                    cols:2
+                                    spacing:30
+                                    padding:25
+                                    size_hint_y:None
+                                    height:120
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\Phys.png'
+                                        MDLabel:
+                                            text:'VẬT LÝ'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Vật Lý'
+                                                root.mon_label = 'VẬT LÝ'
+
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\His.png'
+                                        MDLabel:
+                                            text:'LỊCH SỬ'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Lịch Sử'
+                                                root.mon_label = 'LỊCH SỬ'
+
+                                GridLayout:
+                                    cols:2
+                                    spacing:30
+                                    padding:25
+                                    size_hint_y:None
+                                    height:120
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\Chem.png'
+                                        MDLabel:
+                                            text:'HÓA HỌC'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Hóa Học'
+                                                root.mon_label = 'HÓA HỌC'
+
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\Geo.png'
+                                        MDLabel:
+                                            text:'ĐỊA LÝ'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Địa Lý'
+                                                root.mon_label = 'ĐỊA LÝ'
+
+                                GridLayout:
+                                    cols:2
+                                    spacing:30
+                                    padding:25
+                                    size_hint_y:None
+                                    height:120
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\Bio.png'
+                                        MDLabel:
+                                            text:'SINH HỌC'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Sinh Học'
+                                                root.mon_label = 'SINH HỌC'
+
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\GD.png'
+                                        MDLabel:
+                                            text:'GDCD'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'GDCD'
+                                                root.mon_label = 'GDCD'
+
+                                GridLayout:
+                                    cols:1
+                                    spacing:30
+                                    padding:25
+                                    size_hint_y:None
+                                    height:120
+                                    MDCard:
+                                        orientation:'vertical'
+                                        size_hint: (None,None)
+                                        size: 120,170
+                                        ripple_behavior:True
+                                        border_radius:20
+                                        radius:[15]
+                                        padding:10
+                                        Image:
+                                            source:'Image\Eng.png'
+                                        MDLabel:
+                                            text:'ANH VĂN'
+                                            halign:'center'
+                                        MDRoundFlatButton:
+                                            text:'CHỌN'
+                                            pos_hint:{'center_x':0.5}
+                                            on_release:
+                                                root.open_dialog1()
+                                                root.mon = 'Anh Văn'
+                                                root.mon_label = 'ANH VĂN'
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:30
+
+        
+
+
+        #Menu Thông Tin Ôn Luyện
+        Screen:
+            name:'pre_onluyen'
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:'Ôn Luyện'
+                        left_action_items: [['arrow-left', lambda x: root.change_screen('onluyen_menu')]]
+                    Widget:
+
+                MDLabel:
+                    text:'THÔNG TIN BÀI ÔN LUYỆN'
+                    halign:'center'
+                    pos_hint:{'center_y':0.75}
+                    font_style:'H5'
+                    bold:True
+
+                MDLabel:
+                    text: 'MÔN: '+ root.mon_label
+                    halign:'center'
+                    pos_hint: {'center_y':0.6}
+                    font_size: 25
+                    
+                    
+
+                MDLabel:
+                    text:'THỜI GIAN: ' + str(root.time_min) + ' PHÚT'
+                    halign:'center'
+                    pos_hint:{'center_y':0.5}
+                    font_size:25
+
+                MDSlider:
+                    max: 150
+                    min: 0
+                    value: 0
+                    pos_hint: {'center_x':0.5, 'center_y':0.4}
+                    on_value: root.time_min = int(self.value)
+
+                MDRectangleFlatButton:
+                    text: 'Bắt đầu làm bài'
+                    pos_hint: {'center_x':0.5, 'center_y':0.2}
+                    size_hint: None,None
+                    height:50
+                    width: 400
+                    font_size: 20
+                    on_release: 
+                        root.check1(root.time_min, 'loading')
+                        
+        
+        #Loading Screen Ôn Luyện
+        Screen:
+            name:'loading'
+            on_enter: root.run_multi_func1()
+            FloatLayout:
+                MDLabel:
+                    text:root.waiting_label
+                    halign:'center'
+                    pos_hint:{'center_y':0.6}
+                    font_size: 14
+                MDProgressBar:
+                    pos_hint: {'center_x':0.5, 'center_y':0.5}
+                    size_hint_x:0.7
+                    value: root.prog_val
+                
+
+
+                        
+
+        #Screen Bài Làm Ôn Luyện
+        Screen:
+            name: 'bailam'
+            on_enter: 
+                root.run_multi_func2()
+                app.remove_first_tab()
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:root.time_count
+                        elevation:8
+                        right_action_items: [['check-bold', lambda x: root.open_dialog3()]]
+                        left_action_items: [['timer', lambda x:x]]
+                    MDTabs:
+                        id:tabs
+                        on_tab_switch: app.on_tab_switch(*args)
+                        Tab:
+                            id:tab1
+                            text:'Câu 0'
+        
+        #Screen kết thúc bài làm
+        Screen:
+            name:'finish'
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title: 'Thông tin bài làm'
+                        elevation:8
+
+                    BoxLayout:
+                        ScrollView:
+                            GridLayout:
+                                cols:1
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:60
+                                padding:30
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+
+                                MDLabel:
+                                    text:'BÀI LÀM KẾT THÚC'
+                                    halign: 'center'
+                                    pos_hint:{'center_y':0.8}
+                                    font_style:'H5'
+                                    bold:True
+
+                                MDCard:
+                                    orientation:'vertical'
+                                    size_hint:None,None
+                                    size: 300,200
+                                    border_radius: 20
+                                    radius:[15]
+
+                                    MDLabel:
+                                        text:'Bạn đã làm đúng: '+root.point_label+'/20 câu'
+                                        halign:'center'
+                                        font_size:20
+                                    
+                                    MDLabel:
+                                        text: root.comment
+                                        halign:'center'
+                                        font_size:22
+                                
+                                FloatLayout:
+                                    MDRectangleFlatButton:
+                                        text:'XEM LẠI BÀI LÀM'
+                                        pos_hint:{'center_x':0.5,'center_y':0.4}
+                                        font_size: 20
+                                        on_release: root.change_screen('review')
+
+                                FloatLayout:
+                                    MDRectangleFlatButton:
+                                        text:'TRANG CHỦ'
+                                        pos_hint:{'center_x':0.5,'center_y':0.2}
+                                        font_size: 20
+                                        on_release:root.change_screen('main_menu')
+        
+        #Screen xem bài làm
+        Screen:
+            name:'review'
+            on_enter:
+                app.remove_first_tab_2()
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:'Bài làm của bạn'
+                        elevation:8
+                        left_action_items: [['arrow-left', lambda x:root.change_screen('finish')]]
+                    MDTabs:
+                        id:tabs2
+                        on_tab_switch: app.on_tab_switch_2(*args)
+                        TabReview:
+                            id:tab2
+                            text:'Câu 0'
+
+        #Menu Hướng Dẫn
+        Screen:
+            name:'hd_menu'
+            FloatLayout:
+                BoxLayout:
+                    orientation:'vertical'
+                    MDToolbar:
+                        title:'Hướng dẫn'
+                        left_action_items: [['arrow-left', lambda x: root.change_screen('main_menu')]]
+                        elevation:8
+
+                    MDBottomNavigation:
+
+                        MDBottomNavigationItem:
+                            name:'screen_hd_baithi'
+                            text:'Bài Thi'
+                            icon:'notebook-multiple'
+                            BoxLayout:
+                                ScrollView:
+                                    GridLayout:
+                                        cols:1
+                                        size_hint_y:None
+                                        height:self.minimum_height
+                                        padding:20
+                                        spacing:20
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+                                        MDLabel:
+                                            text:'HƯỚNG DẪN BÀI THI'
+                                            halign:'center'
+                                            pos_hint:{'center_y':0.8}
+                                            bold:True
+                                            font_style:'H5'
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:15
+
+                                        MDLabel:
+                                            text:'|Chọn vào mục "BÀI THI" trên màn hình chính'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\Main.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn vào bộ đề có môn thi theo ý muốn'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\BaiThi1.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn thời gian làm bài và bắt đầu làm bài'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\BaiThi2.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn thanh câu hỏi ở trên để đổi câu hỏi'
+                                            halign:'left'
+                                            font_size:15
+                                        MDLabel:
+                                            text:'|Chọn môn thi ở thanh dưới để đổi môn thi'
+                                            halign:'left'
+                                            font_size:15
+                                        MDLabel:
+                                            text:'|Chọn nút nộp bài ở góc trên bên phải để nộp bài thi'
+                                            halign:'left'
+                                            font_size:14
+                                        
+                                        Image:
+                                            source:'Image\BaiThi3.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Thông tin về điểm, lời nhận xét sẽ được hiển thị trên màn hình'
+                                            halign:'left'
+                                            font_size:12
+                                        MDLabel:
+                                            text:'|Chọn mục "XEM LẠI BÀI LÀM" để xem lại bài thi đã làm'
+                                            halign:'left'
+                                            font_size:12
+                                        
+                                        Image:
+                                            source:'Image\BaiThi4.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+
+
+                        MDBottomNavigationItem:
+                            name:'screen_hd_onluyen'
+                            text:'Ôn Luyện'
+                            icon:'book-open-page-variant'
+
+                            BoxLayout:
+                                ScrollView:
+                                    GridLayout:
+                                        cols:1
+                                        size_hint_y:None
+                                        height:self.minimum_height
+                                        padding:20
+                                        spacing:20
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+                                        MDLabel:
+                                            text:'HƯỚNG DẪN ÔN LUYỆN'
+                                            halign:'center'
+                                            pos_hint:{'center_y':0.8}
+                                            bold:True
+                                            font_style:'H5'
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:15
+
+                                        MDLabel:
+                                            text:'|Chọn vào mục "ÔN LUYỆN" trên màn hình chính'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\MainOL.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn vào môn ôn luyện theo ý muốn'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\OL1.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn thời gian làm bài và bắt đầu làm bài'
+                                            halign:'left'
+                                            font_size:15
+                                        
+                                        Image:
+                                            source:'Image\OL2.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Chọn thanh câu hỏi ở trên để đổi câu hỏi'
+                                            halign:'left'
+                                            font_size:15
+                                        MDLabel:
+                                            text:'|Chọn nút nộp bài ở góc trên bên phải để nộp bài thi'
+                                            halign:'left'
+                                            font_size:14
+                                        
+                                        Image:
+                                            source:'Image\OL3.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                        
+                                        MDLabel:
+                                            text:''
+                                            size_hint_y:None
+                                            height:20
+
+                                        MDLabel:
+                                            text:'|Thông tin về điểm, lời nhận xét sẽ được hiển thị trên màn hình'
+                                            halign:'left'
+                                            font_size:12
+                                        MDLabel:
+                                            text:'|Chọn mục "XEM LẠI BÀI LÀM" để xem lại bài ôn luyện đã làm'
+                                            halign:'left'
+                                            font_size:12
+                                        
+                                        Image:
+                                            source:'Image\OL4.png'
+                                            pos_hint:{'center_x':0.5}
+                                            allow_stretch:True
+                                            size_hint:None, None
+                                            halign:'center'
+                                            height:350
+                                            width:350
+                                
+
+                    
+
+                    
+
+        #Menu Cài Đặt
+        Screen:
+            name:'setting_screen'
+            FloatLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title:'Cài Đặt và Giới Thiệu'
+                        left_action_items: [['arrow-left', lambda x: root.change_screen('main_menu')]]
+                        elevation: 8
+                    
+                    BoxLayout:
+                        ScrollView:
+                            GridLayout:
+                                cols:1
+                                size_hint_y:None
+                                height:self.minimum_height
+                                padding:10
+                                spacing:50
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+                                MDLabel:
+                                    text:'CÀI ĐẶT'
+                                    halign:'center'
+                                    pos_hint: {'center_y':0.8}
+                                    bold:True
+                                    font_style: 'H5'
+                                MDList:
+                                    spacing:10
+                                    TwoLineAvatarListItem:
+                                        text:'Màu nền'
+                                        secondary_text: 'Tùy chọn màu nền yêu thích'
+                                        on_release: root.show_theme_picker()
+                                        IconLeftWidget:
+                                            icon:'palette'
+                                
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+
+                                MDLabel:
+                                    text:'GIỚI THIỆU'
+                                    halign:'center'
+                                    bold:True
+                                    font_style:'H5'
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+                                MDLabel:
+                                    text:'ÔN LUYỆN TRẮC NGHIỆM CÁC MÔN KHỐI 9 là phần mềm dành cho smartphone được xây dựng và phát triển để hỗ trợ học sinh lớp 9 trong việc ôn luyện hình thức trắc nghiệm, mong muốn rằng sẽ cải thiện được thành tích và hiệu quả học tập của học sinh sau khi trải nghiệm sử dụng phần mềm.'
+                                    font_size: 15
+                                    halign:'center'
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:10
+                                MDLabel:
+                                    text:'Thiết kế và phát triển'
+                                    halign:'center'
+                                    bold:True
+                                    font_size:18
+                                MDLabel:
+                                    text:'Nguyễn Phúc Thắng'
+                                    halign:'center'
+                                    font_size:15
+                                MDLabel:
+                                    text:'Huỳnh Lê Hoàng Ngọc'
+                                    halign:'center'
+                                    font_size:15
+
+                                MDLabel:
+                                    text:'Hỗ trợ và hướng dẫn'
+                                    halign:'center'
+                                    bold:True
+                                    font_size:18
+                                MDLabel:
+                                    text:'Thầy Phan Trần Như Hùng'
+                                    halign:'center'
+                                    font_size:15
+                                
+                                
+                                MDLabel:
+                                    text:'Cung cấp tài liệu'
+                                    halign:'center'
+                                    bold:True
+                                    font_size:18
+                                MDLabel:
+                                    text:'Giáo viên các bộ môn của trường THCS Lý Thường Kiệt'
+                                    halign:'center'
+                                    font_size:14
+
+                                
+
+                                MDLabel:
+                                    text:'Ngoài ra, còn có sự hỗ trợ của các nguồn tài liệu từ các websites, ứng dụng khác để giúp hoàn thiện phần mềm về mặt ý tưởng và hiện thực'
+                                    halign:'center'
+                                    font_size:14
+
+                                MDLabel:
+                                    text:''
+                                    size_hint_y:None
+                                    height:55
+                                FloatLayout:
+                                    Image:
+                                        source:'Image\LogoLTK.png'
+                                        pos_hint:{'center_x':0.5}
+                                        allow_stretch:True
+                                        size_hint:None, None
+                                        height:125
+                                        width:125   
+                                    
+                                    
+<Tab>:
+    optiona:optiona
+    optionb:optionb
+    optionc:optionc
+    optiond:optiond
+    box1:box1
+    box2:box2
+    box3:box3
+    box4:box4
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                cols:1
+                size_hint_y:None
+                height:self.minimum_height
+                spacing:40
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:20
+                MDLabel:
+                    id: question
+                    text: ''
+                    halign:'center'
+                    pos_hint:{'center_y':0.8}
+                    font_size:15
+                    size_hint_y:None
+                    height:self.texture_size[1]
+
+                GridLayout:
+                    cols:1
+                    padding:55
+                    MDCard:
+                        id:card1
+                        orientation:'vertical'
+                        size_hint:None,None
+                        width:250
+                        height: grid1.row_default_height + grid2.row_default_height + grid3.row_default_height + grid4.row_default_height+150
+                        border_radius:20
+                        radius:[15]
+                        padding: 10
+                        spacing:50
+                        GridLayout:
+                            id:grid1
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optiona.height
+                            MDCheckbox:
+                                id: box1
+                                group: 'group'
+                                on_active: root.checkA(*args)
+                            MDLabel:
+                                id:optiona
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+
+                        GridLayout:
+                            id:grid2
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optionb.height
+                            MDCheckbox:
+                                id:box2
+                                group:'group'
+                                on_active: root.checkB(*args)
+                            MDLabel:
+                                id: optionb
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id:grid3
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optionc.height
+                            MDCheckbox:
+                                id:box3
+                                group: 'group'
+                                on_active: root.checkC(*args)
+                            MDLabel:
+                                id: optionc
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id: grid4
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optiond.height
+                            MDCheckbox:
+                                id:box4
+                                group:'group'
+                                on_active: root.checkD(*args)
+                            MDLabel:
+                                id:optiond
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:card1.height+100
+
+
+<TabReview>:
+    ans_a:ans_a
+    ans_b:ans_b
+    ans_c:ans_c
+    ans_d:ans_d
+    icon1:icon1
+    icon2:icon2
+    icon3:icon3
+    icon4:icon4
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                cols:1
+                size_hint_y:None
+                height:self.minimum_height
+                spacing:40
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:20
+                MDLabel:
+                    id: question
+                    text: ''
+                    halign:'center'
+                    pos_hint:{'center_y':0.8}
+                    font_size:15
+                    size_hint_y:None
+                    height:self.texture_size[1]
+
+                GridLayout:
+                    cols:1
+                    padding:55
+                    MDCard:
+                        id:card1
+                        orientation:'vertical'
+                        size_hint:None,None
+                        width:250
+                        height: grid1.row_default_height + grid2.row_default_height + grid3.row_default_height + grid4.row_default_height+150
+                        border_radius:20
+                        radius:[15]
+                        padding: 10
+                        spacing:50
+                        GridLayout:
+                            id:grid1
+                            cols:2
+                            row_force_default:True
+                            row_default_height:ans_a.height
+                            MDIcon:
+                                id: icon1 
+                                icon:'blank'                                
+                            MDLabel:
+                                id:ans_a
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:200
+                                height: self.texture_size[1]
+
+
+                        GridLayout:
+                            id:grid2
+                            cols:2
+                            row_force_default:True
+                            row_default_height:ans_b.height
+                            MDIcon:
+                                id:icon2
+                                icon:'blank'                                                               
+                            MDLabel:
+                                id: ans_b
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:200
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id:grid3
+                            cols:2
+                            row_force_default:True
+                            row_default_height:ans_c.height
+                            MDIcon:
+                                id:icon3
+                                icon:'blank'
+                            MDLabel:
+                                id: ans_c
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:200
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id: grid4
+                            cols:2
+                            row_force_default:True
+                            row_default_height:ans_d.height
+                            MDIcon:
+                                id:icon4
+                                icon:'blank'
+                            MDLabel:
+                                id:ans_d
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:200
+                                height: self.texture_size[1]
+
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:card1.height+20
+
+                MDLabel:
+                    id:note
+                    text:''
+                    halign:'center'
+                    font_style:'Caption'
+
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:10
+
+
+<TabBaiThi>:
+    optiona:optiona
+    optionb:optionb
+    optionc:optionc
+    optiond:optiond
+    box1:box1
+    box2:box2
+    box3:box3
+    box4:box4
+    BoxLayout:
+        ScrollView:
+            GridLayout:
+                cols:1
+                size_hint_y:None
+                height:self.minimum_height
+                spacing:40
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:20
+                MDLabel:
+                    id: question
+                    text: ''
+                    halign:'center'
+                    pos_hint:{'center_y':0.8}
+                    font_size:15
+                    size_hint_y:None
+                    height:self.texture_size[1]
+
+                GridLayout:
+                    cols:1
+                    padding:55
+                    MDCard:
+                        id:card1
+                        orientation:'vertical'
+                        size_hint:None,None
+                        width:250
+                        height: grid1.row_default_height + grid2.row_default_height + grid3.row_default_height + grid4.row_default_height+150
+                        border_radius:20
+                        radius:[15]
+                        padding: 10
+                        spacing:50
+                        GridLayout:
+                            id:grid1
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optiona.height
+                            MDCheckbox:
+                                id: box1
+                                group: 'group'
+                                on_active: root.checkA(*args)
+                            MDLabel:
+                                id:optiona
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+
+                        GridLayout:
+                            id:grid2
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optionb.height
+                            MDCheckbox:
+                                id:box2
+                                group:'group'
+                                on_active: root.checkB(*args)
+                            MDLabel:
+                                id: optionb
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id:grid3
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optionc.height
+                            MDCheckbox:
+                                id:box3
+                                group: 'group'
+                                on_active: root.checkC(*args)
+                            MDLabel:
+                                id: optionc
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                        GridLayout:
+                            id: grid4
+                            cols:2
+                            row_force_default:True
+                            row_default_height:optiond.height
+                            MDCheckbox:
+                                id:box4
+                                group:'group'
+                                on_active: root.checkD(*args)
+                            MDLabel:
+                                id:optiond
+                                text:''
+                                font_size:15
+                                size_hint:None,None
+                                width:150
+                                height: self.texture_size[1]
+
+                MDLabel:
+                    text:''
+                    size_hint_y:None
+                    height:card1.height+100
+
+<TabBaiThiReview>:
